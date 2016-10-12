@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+##
+# Script called in release phase of Heroku app deployment.
+#
+# This script:
+#   - Deploys Force.com source to workspace org,
+#   - Installs AppCloud and Force.com CLI plugins,
+#   -
+#
+# Assumes Heroku CLI already installed.
+##
+
+START_TIME=$SECONDS
+
+# Fail immediately on non-zero exit code.
+set -e
+# Fail on undeclared variables.
+set -u
+# Debug, echo every command
+#set -x
+
+SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+# Pushes source to the Salesforce org
+.salesforce/deploy
+
+
+
+echo "DONE!  Completed in $(($SECONDS - $START_TIME))s"
+exit 0

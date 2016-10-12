@@ -1,0 +1,56 @@
+<apex:page standardController="Contact">
+  <!-- Page Header -->
+  <apex:sectionHeader title="Contact Edit" subtitle="New SFDC Demo Member" />
+  <apex:image value="http://bit.ly/17iLknp" styleClass="logo" />
+  <!-- Begin Form -->
+  <apex:form >
+    <apex:pageBlock title="Rules of SFDC Demo" mode="edit">
+      <!-- SFDC99 Rules -->
+      <apex:outputPanel styleClass="rules">
+        The 1st rule of SFDC Demo is: You do not talk about SFDC Demo.<br />
+        The 2nd rule of SFDC Demo is: You do not talk about SFDC Demo.<br />
+        The 3rd rule of SFDC Demo is: You do not talk about SFDC Demop.<br /><br />
+
+      </apex:outputPanel>
+      <!-- Fields -->
+      <apex:pageBlockSection columns="3" showHeader="true" title="Membership Status">
+        <apex:inputField value="{!contact.FirstName}" required="true" />
+        <apex:inputField value="{!contact.LastName}"  required="true" />
+       
+       
+        
+        
+        
+        
+        
+        
+        
+        <apex:pageBlockSectionItem >
+          <apex:outputLabel >Referrer</apex:outputLabel>
+       
+        </apex:pageBlockSectionItem>
+      </apex:pageBlockSection>
+      <!-- Button Section -->
+      <apex:pageBlockButtons location="bottom">
+        <apex:commandButton value="Add SFDC Demo Member" action="{!save}" />
+     
+      </apex:pageBlockButtons>
+    </apex:pageBlock>
+  </apex:form>
+  <!-- CSS -->
+  <style>
+    .logo {
+      float: right;
+      width: 60px;
+      margin: -65px 20px 0 0;
+    }
+    .rules {
+      color: red;
+      font-size: 18px;
+      font-family: Courier;      
+      margin: 10px 0 10px 30px;
+      float: left;
+      width: 100%;
+    }
+  </style>
+</apex:page>
