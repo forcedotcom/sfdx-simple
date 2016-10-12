@@ -1,0 +1,3 @@
+stagingName=sfdx-simple-staging
+prodName=sfdx-simple-prod
+pipelineName=sfdx-simple-pipelines

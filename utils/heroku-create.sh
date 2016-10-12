@@ -1,6 +1,4 @@
-stagingName=sfdx-simple-staging
-prodName=sfdx-simple-prod
-pipelineName=sfdx-simple-pipelines
+source heroku-config
 
 heroku apps:create $stagingName
 heroku pipelines:create $pipelineName --app $stagingName --stage staging

@@ -1,6 +1,4 @@
-stagingName=sfdx-simple-staging
-prodName=sfdx-simple-prod
-pipelineName=sfdx-simple-pipelines
+source heroku-config
 
 heroku pipelines:destroy $pipelineName
 heroku apps:destroy --app $stagingName --confirm $stagingName
