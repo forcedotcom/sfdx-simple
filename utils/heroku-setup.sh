@@ -9,6 +9,14 @@ heroku buildpacks:add https://github.com/heroku/salesforce-buildpack --app sfdx-
 heroku addons:create salesforce:byoo --app sfdx-simple-staging
 heroku addons:create salesforce:byoo --app sfdx-simple-prod
 
+heroku config:set HEROKU_APP_NAME=sfdx-simple-staging --app sfdx-simple-staging
+heroku config:set HEROKU_APP_NAME=sfdx-simple-prod --app sfdx-simple-prod
+
+#heroku config:set SALESFORCE_BYOO=true --app sfdx-simple-staging
+#heroku config:set SALESFORCE_BYOO=true --app sfdx-simple-prod
+
+
+
 # heroku config:set HEROKU_APP_NAME=dreamhouse-devkeynote-sdx --app dreamhouse-dev-sdx
 # heroku config:set SALESFORCE_BUILDPACK_VERBOSE=true --app dreamhouse-dev-sdx
 # heroku config:set SALESFORCE_BYOO=true --app dreamhouse-dev-sdx
