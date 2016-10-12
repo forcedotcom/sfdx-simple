@@ -1,7 +1,16 @@
 {
-  "name": "rajdemo",
-  "scripts": {
-  },
+  "name": "sfdx-simple",
+  "description": "Dreamforce Force.com Applicaiton demonstrating Force.com and Heroku Integration",
+  "repository": "https://github.com/forcedotcom/dreamhouse-acdx",
+  "logo": "https://avatars0.githubusercontent.com/u/464563?v=3&s=200", 
+  "addons": [
+    "salesforce"
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/salesforce-buildpack"
+    }
+  ],
   "env": {
     "SALESFORCE_URL": {
       "required": true
@@ -10,15 +19,5 @@
       "required": true
     
     }
-  },
-  "formation": {
-  },
-  "addons": [
-    "salesforce"
-  ],
-  "buildpacks": [
-    {
-      "url": "https://github.com/heroku/salesforce-buildpack"
-    }
-  ]
+  }
 }
