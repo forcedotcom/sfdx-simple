@@ -25,7 +25,5 @@ SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 # Pushes source to the Salesforce org
 .salesforce/deploy
 
-
-
 echo "DONE!  Completed in $(($SECONDS - $START_TIME))s"
 exit 0

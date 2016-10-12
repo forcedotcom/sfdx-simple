@@ -1,7 +1,7 @@
 const express = require('express');
 const force = require('salesforce-alm-buildpack-dev');
 
-const startUrl = process.env.SALESFORCE_START_URL || '/home/home.jsp';
+const startUrl = process.env.SALESFORCE_START_URL || '/one/one.app';
 const org = process.env.SALESFORCE_ORG || 'org@salesforce.com';
 const app = express.createServer(express.logger());
 
