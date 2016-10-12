@@ -1,8 +1,7 @@
 {
-  "Company": "Raj Demo Company",
+  "Company": "Demo Company",
   "Country": "US",
   "LastName": "Demo",
-  "SignupEmail": "radvani@salesforce.com",
-  "Username": "rajdemows2@raj.com",
+  "SignupEmail": "wade.wegner@salesforce.com",
   "TemplateId": "0TTB0000000A6Bd"
 }

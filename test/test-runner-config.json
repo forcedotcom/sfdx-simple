@@ -1,0 +1,143 @@
+{
+    "settings": {
+        "outputDir": "testArtifacts",
+        "selenium": true
+    },
+    "orgs": [
+        {
+            "name": "sfdx-simple-default",
+            "definition": "config/workspace-scratch-def.json"
+        }
+    ],
+    "suites": [
+        {
+            "name": "basic-apex",
+            "categories": [
+                {
+                    "type": "apex",
+                    "tests": [
+                        "SampleControllerTests"
+                    ]
+                }
+            ]
+        },{
+            "name": "integration",
+            "categories": [
+                {
+                    "type": "integration",
+                    "tests": ["test.integration.IntegrationTest"]
+                }
+            ]
+        }
+    ],
+    "environments": [
+        {
+            "name": "sfdx-simple",
+            "orgs": [
+                "sfdx-simple-default"
+            ]
+        }
+    ],
+    "invocations": [
+        {
+            "name": "basic",
+            "environments": [
+                "sfdx-simple"
+            ],
+            "suites": [
+                "basic-apex",
+                "integration"
+            ]
+        },{
+            "name": "all-tests",
+            "environments": [
+                "sfdx-simple"
+            ],
+            "suites": [
+                "basic-apex",
+                "integration"
+            ]
+        }
+    ],
+    "operations": [
+        {
+            "name": "download-selenium-client",
+            "exec": "if [ ! -f \"testartifacts/selenium-java.zip\" ]; then curl",
+            "args": [
+                "-o $outputDir/selenium-java.zip",
+                "http://selenium-release.storage.googleapis.com/3.0-beta3/selenium-java-3.0.0-beta3.zip",
+                "; else echo \"Selenium client zip exist\"; fi"
+            ]
+        },
+        {
+            "name": "unzip-selenium-client",
+            "exec": "unzip",
+            "args": [
+                "-o",
+                "$outputDir/selenium-java",
+                "-d $outputDir/selenium-client-jars"
+            ]
+        },
+        {
+            "name": "compile",
+            "exec": "javac",
+            "args": [
+                "-cp .:$outputDir/selenium-client-jars/client-combined-3.0.0-beta3-nodeps.jar:$outputDir/selenium-client-jars/lib/*",
+                "-d $outputDir",
+                "test/integration/BaseSalesforceTest.java",
+                "test/integration/IntegrationTest.java"
+            ]
+        },
+        {
+            "name": "integration",
+            "env": {
+                "SALESFORCE_ACCESS_TOKEN": "$ORG_ACCESSTOKEN",
+                "SALESFORCE_INSTANCE_URL": "$ORG_INSTANCEURL"
+            },
+            "type": "spawn",
+            "exec": "java",
+            "args": [
+                "-cp",
+                ".:$outputDir/selenium-client-jars/client-combined-3.0.0-beta3-nodeps.jar:$outputDir:$outputDir/selenium-client-jars/lib/*:force-app",
+                "org.junit.runner.JUnitCore",
+                "$TESTS"
+            ]
+        }
+    ],
+    "contexts": [
+        {
+            "name": "local",
+            "useWorkspaceOrg": true,
+            "pushSource": false,
+            "beforeTests": [
+                "download-selenium-client",
+                "unzip-selenium-client",
+                "compile"
+            ]
+        },
+        {
+            "name": "heroku-ci",
+            "beforeTests": [
+                "download-selenium-client",
+                "unzip-selenium-client",
+                "compile"
+            ]
+        }
+    ],
+    "profiles": [
+        {
+            "name": "basic",
+            "context": "local",
+            "default": true,
+            "invocations": [
+                "basic"
+            ]
+        },{
+            "name": "master",
+            "context": "heroku-ci",
+            "invocations": [
+                "all-tests"
+            ]
+        }
+    ]
+}
