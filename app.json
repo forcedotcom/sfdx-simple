@@ -1,23 +1,27 @@
 {
-  "name": "sfdx-simple",
-  "description": "Dreamforce Force.com Applicaiton demonstrating Force.com and Heroku Integration",
-  "repository": "https://github.com/forcedotcom/dreamhouse-acdx",
-  "logo": "https://avatars0.githubusercontent.com/u/464563?v=3&s=200", 
-  "addons": [
-    "salesforce"
-  ],
-  "buildpacks": [
-    {
-      "url": "https://github.com/heroku/salesforce-buildpack"
+    "name": "sfdx-simple",
+    "description": "Simple Salesforce Developer Experience Force.com Applicaiton demonstrating Force.com and Heroku Integration",
+    "repository": "https://github.com/forcedotcom/simple-sfdx",
+    "logo": "https://avatars0.githubusercontent.com/u/464563?v=3&s=200", 
+    "addons": [
+        "salesforce",
+        "salesforcedx",
+        "force.com",
+        "heroku"
+    ],
+    "buildpacks": [
+        {
+            "url": "https://github.com/heroku/salesforce-buildpack"
+        }
+    ],
+    "env": {
+        "HEROKU_APP_NAME": {
+             "description": "Provided to buildpacks by the Heroku platform when required:true.    Need for Pipelines stage-awareness.",
+             "required": true
+        },
+        "SALESFORCE_HUB_URL": {
+            "description": "Required for Review apps to create orgs",
+            "required": true
+        }
     }
-  ],
-  "env": {
-    "SALESFORCE_URL": {
-      "required": true
-    },
-    "SALESFORCE_HUB_URL" : {
-      "required": true
-    
-    }
-  }
 }
