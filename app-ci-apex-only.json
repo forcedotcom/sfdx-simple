@@ -10,6 +10,7 @@
         "heroku"
     ],
     "addons": [
+        "salesforce"
     ],
     "buildpacks": [
         {
@@ -17,9 +18,9 @@
         }
     ],
     "scripts": {
-        "test": "test/test.sh"
+        "test-setup": "node .salesforce/force.js release",
+        "test": "heroku force:apex:test --reporter tap"
     },
     "env": {
-        "SALESFORCE_URL": "false"
     }
 }
