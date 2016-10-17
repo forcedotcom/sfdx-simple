@@ -9,6 +9,9 @@
         "force.com",
         "heroku"
     ],
+    "addons": [
+        "salesforce"
+    ],
     "buildpacks": [
         {
             "url": "https://github.com/heroku/salesforce-buildpack"
