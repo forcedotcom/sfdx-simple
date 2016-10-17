@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+##
+# Script called in release phase of Heroku app deployment.
+#
+# This script:
+#   - Deploys Force.com source to workspace org,
+#   - Calls another script to perform additional org setup, eg data loading.
+##
+
+START_TIME=$SECONDS
+
+# Fail immediately on non-zero exit code.
+set -e
+# Fail on undeclared variables.
+set -u
+# Debug, echo every command
+#set -x
+
+SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+# Pushes source to the Salesforce org
+node .salesforce/force.js release
+
+# Perform extra org setup
+chmod +x $SCRIPT_DIR/extra-org-setup.sh
+sh $SCRIPT_DIR/extra-org-setup.sh
+
+echo "DONE!  Completed in $(($SECONDS - $START_TIME))s"
+exit 0
