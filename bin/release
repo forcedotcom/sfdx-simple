@@ -5,10 +5,7 @@
 #
 # This script:
 #   - Deploys Force.com source to workspace org,
-#   - Installs AppCloud and Force.com CLI plugins,
-#   -
-#
-# Assumes Heroku CLI already installed.
+#   - Calls another script to perform additional org setup, eg data loading.
 ##
 
 START_TIME=$SECONDS
@@ -23,7 +20,11 @@ set -u
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 
 # Pushes source to the Salesforce org
-.salesforce/deploy
+node .salesforce/force.js release
+
+# Perform extra org setup
+chmod +x $SCRIPT_DIR/extra-org-setup.sh
+sh $SCRIPT_DIR/extra-org-setup.sh
 
 echo "DONE!  Completed in $(($SECONDS - $START_TIME))s"
 exit 0

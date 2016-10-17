@@ -9,19 +9,17 @@
         "force.com",
         "heroku"
     ],
+    "addons": [
+    ],
     "buildpacks": [
         {
             "url": "https://github.com/heroku/salesforce-buildpack"
         }
     ],
+    "scripts": {
+        "test": "test/test.sh"
+    },
     "env": {
-        "HEROKU_APP_NAME": {
-             "description": "Provided to buildpacks by the Heroku platform when required:true.  Need for Pipelines stage-awareness.",
-             "required": true
-        },
-        "SALESFORCE_HUB_URL": {
-            "description": "Required for Review apps to create orgs",
-            "required": true
-        }
+        "SALESFORCE_URL": "false"
     }
 }
