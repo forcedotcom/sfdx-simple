@@ -3,7 +3,7 @@
     "description": "Simple Salesforce Developer Experience Force.com Applicaiton demonstrating Force.com and Heroku Integration",
     "repository": "https://github.com/forcedotcom/simple-sfdx",
     "logo": "https://avatars0.githubusercontent.com/u/464563?v=3&s=200", 
-    "addons": [
+    "keywords": [
         "salesforce",
         "salesforcedx",
         "force.com",
