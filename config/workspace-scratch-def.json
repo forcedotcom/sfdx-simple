@@ -2,6 +2,9 @@
   "Company": "Demo Company",
   "Country": "US",
   "LastName": "Demo",
-  "SignupEmail": "wade.wegner@salesforce.com",
-  "TemplateId": "0TTB0000000A6Bd"
+  "Email": "wade.wegner@salesforce.com",
+  "Edition": "Developer",
+  "OrgPreferences" : {
+    "S1DesktopEnabled" : true
+  }
 }
