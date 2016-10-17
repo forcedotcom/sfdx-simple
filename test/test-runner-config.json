@@ -45,8 +45,7 @@
                 "sfdx-simple"
             ],
             "suites": [
-                "basic-apex",
-                "integration"
+                "basic-apex"
             ]
         },{
             "name": "all-tests",
