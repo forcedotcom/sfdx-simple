@@ -23,7 +23,7 @@
              "required": true
         },
         "SALESFORCE_HUB_URL": {
-            "description": "Required for Review apps to create orgs",
+            "description": "Required to provision orgs for Review apps",
             "required": true
         }
     }
