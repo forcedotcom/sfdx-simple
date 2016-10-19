@@ -5,7 +5,7 @@ import org.junit.*;
 import org.openqa.selenium.*;
 
 /**
- * Base test for ALMSourceDrivenDev/Example-Dev-Workspace UI tests.
+ * UI test.
  */
 public class IntegrationTest extends BaseSalesforceTest {
     @Test
