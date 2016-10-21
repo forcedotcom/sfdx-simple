@@ -1,7 +1,7 @@
 @isTest
-private class SampleControllerTests {
+private class DemoControllerTests {
     @isTest static void passingTest() {
-        SampleController sc = new SampleController();
+        DemoController sc = new DemoController();
         System.assertEquals(sc.getAppVersion(), '1.0.0');
     }
 }

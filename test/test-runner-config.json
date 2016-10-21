@@ -1,12 +1,20 @@
 {
     "settings": {
-        "outputDir": "testArtifacts",
+        "outputDir": "$WORKSPACE/test-results",
         "selenium": true
     },
     "orgs": [
         {
             "name": "sfdx-simple-default",
             "definition": "config/workspace-scratch-def.json"
+        }
+    ],
+    "data": [
+        {
+            "name": "demo-page-data",
+            "files": [
+                "test/test-data.json"
+            ]
         }
     ],
     "suites": [
@@ -16,17 +24,23 @@
                 {
                     "type": "apex",
                     "tests": [
-                        "SampleControllerTests"
+                        "DemoControllerTests"
                     ]
                 }
             ]
-        },{
-            "name": "integration",
+        },
+        {
+            "name": "integration-ui",
             "categories": [
                 {
                     "type": "integration",
-                    "tests": ["test.integration.IntegrationTest"]
+                    "tests": [
+                        "DemoPageUITest"
+                    ]
                 }
+            ],
+            "data": [
+                "demo-page-data"
             ]
         }
     ],
@@ -40,66 +54,38 @@
     ],
     "invocations": [
         {
-            "name": "basic",
+            "name": "unit-tests",
             "environments": [
                 "sfdx-simple"
             ],
             "suites": [
                 "basic-apex"
             ]
-        },{
-            "name": "all-tests",
+        },
+        {
+            "name": "ui-tests",
             "environments": [
                 "sfdx-simple"
             ],
             "suites": [
-                "basic-apex",
-                "integration"
+                "integration-ui"
             ]
         }
     ],
     "operations": [
         {
-            "name": "download-selenium-client",
-            "exec": "if [ ! -f \"testartifacts/selenium-java.zip\" ]; then curl",
-            "args": [
-                "-o $outputDir/selenium-java.zip",
-                "http://selenium-release.storage.googleapis.com/3.0-beta3/selenium-java-3.0.0-beta3.zip",
-                "; else echo \"Selenium client zip exist\"; fi"
-            ]
-        },
-        {
-            "name": "unzip-selenium-client",
-            "exec": "unzip",
-            "args": [
-                "-o",
-                "$outputDir/selenium-java",
-                "-d $outputDir/selenium-client-jars"
-            ]
-        },
-        {
-            "name": "compile",
-            "exec": "javac",
-            "args": [
-                "-cp .:$outputDir/selenium-client-jars/client-combined-3.0.0-beta3-nodeps.jar:$outputDir/selenium-client-jars/lib/*",
-                "-d $outputDir",
-                "test/integration/BaseSalesforceTest.java",
-                "test/integration/IntegrationTest.java"
-            ]
-        },
-        {
             "name": "integration",
+            "exec": "mvn",
+            "timeout": 100000,
             "env": {
                 "SALESFORCE_ACCESS_TOKEN": "$ORG_ACCESSTOKEN",
-                "SALESFORCE_INSTANCE_URL": "$ORG_INSTANCEURL"
+                "SALESFORCE_INSTANCE_URL": "$ORG_INSTANCEURL",
+                "INTEGRATION_TEST_RESULTS": "$outputDir"
             },
-            "type": "spawn",
-            "exec": "java",
             "args": [
-                "-cp",
-                ".:$outputDir/selenium-client-jars/client-combined-3.0.0-beta3-nodeps.jar:$outputDir:$outputDir/selenium-client-jars/lib/*:force-app",
-                "org.junit.runner.JUnitCore",
-                "$TESTS"
+                "-f $WORKSPACE/test/pom.xml",
+                "-Dtest=$TESTS",
+                "integration-test"
             ]
         }
     ],
@@ -107,35 +93,33 @@
         {
             "name": "local",
             "useWorkspaceOrg": true,
-            "pushSource": false,
-            "beforeTests": [
-                "download-selenium-client",
-                "unzip-selenium-client",
-                "compile"
-            ]
+            "pushSource": false
         },
         {
-            "name": "heroku-ci",
-            "beforeTests": [
-                "download-selenium-client",
-                "unzip-selenium-client",
-                "compile"
-            ]
+            "name": "heroku-ci"
         }
     ],
     "profiles": [
         {
-            "name": "basic",
+            "name": "local-unit",
             "context": "local",
             "default": true,
             "invocations": [
-                "basic"
+                "unit-tests"
             ]
-        },{
+        },
+        {
+            "name": "pull-request",
+            "context": "heroku-ci",
+            "invocations": [
+                "unit-tests"
+            ]
+        },
+        {
             "name": "master",
             "context": "heroku-ci",
             "invocations": [
-                "all-tests"
+                "unit-tests", "ui-tests"
             ]
         }
     ]

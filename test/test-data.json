@@ -1,0 +1,14 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "testAlot"
+            },
+            "firstname": "Sir",
+            "lastname": "Testalot",
+            "title": "Testing Knight",
+            "email": "sirtestalot@testingknights.com"
+        }
+    ]
+}
