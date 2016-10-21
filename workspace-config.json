@@ -1,5 +1,4 @@
 {
-      "SfdcLoginUrl": "https://login.salesforce.com",
       "ApiVersion": "38.0",
       "DefaultArtifact": "force-app"
   }
