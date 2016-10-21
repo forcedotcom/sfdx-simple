@@ -6,7 +6,7 @@
   <!-- Begin Form -->
   <apex:form >
     <apex:pageBlock title="Rules of SFDX Demo" mode="edit">
-      <!-- SFDC99 Rules -->
+      <!-- SFDX99 Rules -->
       <apex:outputPanel styleClass="rules">
         <p>The 1st rule of SFDX Demo is: You do not talk about SFDX Demo.</p>
         <p>The 2nd rule of SFDX Demo is: You do not talk about SFDX Demo.</p>
@@ -21,7 +21,7 @@
 
       <!-- Button Section -->
       <apex:pageBlockButtons location="bottom">
-        <apex:commandButton value="Add SFDC Demo Member" action="{!save}" />
+        <apex:commandButton value="Add SFDX Demo Member" action="{!save}" />
       </apex:pageBlockButtons>
     </apex:pageBlock>
   </apex:form>
