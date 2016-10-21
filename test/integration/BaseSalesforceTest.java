@@ -14,7 +14,7 @@ import com.google.common.base.Function;
 import org.openqa.selenium.support.ui.*;
 
 /**
- * Base test for ALMSourceDrivenDev/Example-Dev-Workspace UI tests.
+ * Base test for Salesforce UI tests.
  */
 public class BaseSalesforceTest {
     protected WebDriver driver;
