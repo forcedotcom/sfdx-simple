@@ -53,20 +53,4 @@ public class BaseSalesforceTest {
 
         driver.get(frontDoorUrl);
     }
-
-    // public WebElement fluentWait(final By locator) {
-    //     Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-    //             .withTimeout(5, TimeUnit.SECONDS)
-    //             .pollingEvery(1, TimeUnit.SECONDS)
-    //             .ignoring(NoSuchElementException.class);
-    //
-    //     WebElement foo = wait.until(new Function<WebDriver, WebElement>() {
-    //         @Override
-    //         public WebElement apply(WebDriver driver) {
-    //             return driver.findElement(locator);
-    //         }
-    //     });
-    //
-    //     return foo;
-    // };
 }

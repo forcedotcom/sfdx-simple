@@ -5,7 +5,8 @@ import org.junit.*;
 import org.openqa.selenium.*;
 
 /**
- * UI test.
+ * UI test to verify the last name is shown on the page. This requires that the
+ * test/test-data.json be loaded into the org.
  */
 public class DemoPageUITest extends BaseSalesforceTest {
     @Test

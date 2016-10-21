@@ -3,6 +3,9 @@ package integration;
 import io.github.bonigarcia.wdm.PhantomJsDriverManager;
 
 public class TestUtil {
+    /**
+     * Use the driver manager to install phantom and set the right system property
+     */
     public static void setupPhantom() {
         PhantomJsDriverManager.getInstance().setup();
     }
