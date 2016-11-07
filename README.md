@@ -31,8 +31,8 @@ The following list briefly describes each configuration file, the application th
 * **workspace-config.json**: Required by Salesforce DX. Configures your workspace.  Use this file to specify the parameters that affect your Salesforce development project.
 * **app.json**: Required by Heroku Pipelines. Configures the Salesforce buildpack and add-on for Heroku review apps.
 * **app-ci.json**: Required by Heroku CI.  Configures the Salesforce buildpack and add-on and tests for the Heroku app that automatically spins up as part of a CI run. 
-* **app-ci-test-runner.json**: Sample app-ci.json file that shows how to use the Test Runner within the context of Heroku CI.
-* **app-ci-apex-only.json**: Sample app-ci.json file that shows how to run Apex tests within the context of Heroku CI. 
+* **app-ci-test-runner.json**: Sample file that shows how to use the Test Runner within the context of Heroku CI.  To use, rename the file **app-ci.json**.
+* **app-ci-apex-only.json**: Sample file that shows how to run Apex tests within the context of Heroku CI. To use, rename the file **app-ci.json**.
 * **Procfile**: Optional Heroku Pipelines file.  Specifies the commands that are run by the Heroku app's dynos.  If you do not explicitly create a Procfile when using Salesforce DX with Heroku Pipelines, a default one is used.
 * **.forceignore**:  Optional Salesforce DX file.   Lists the directories and files that you want force:src:push/pull to ignore.
 * **.project**:  Required by the Eclipse IDE.  Describes the Eclipse project. 
@@ -47,7 +47,7 @@ The following list briefly describes each configuration file, the application th
 
 The following two directories contain source code:
 
-* **force-app**: The source for the sample Force.com app and tests.
+* **force-app**: The source for the sample Force.com app and tests.  You configure the name of this directory using the DefaultArtifact parameter of your **workspace-config.json** file.  
 * **test/integration**: The Java source for the Selenium tests.
 
 Finally, the **utils** directory contains sample scripts for quickly creating and configuring Heroku apps and pipelines.
