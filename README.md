@@ -22,6 +22,36 @@ Our first goal is to set up a developer workspace for us to use to modify our ap
 
 For details on using sfdx-simple, please review the [Salesforce DX Developer Guide](https://goo.gl/rG43Cz).
 
+## Description of Files and Directories
+
+The sfdx-simple repo shows how you can set up your own repo to start using Salesforce DX.  The repo includes a number of configuration files; some are specific to Salesforce DX while others are used by related applications such as Heroku Pipelines and CI, Eclipse, Git, or Selenium.  
+
+The following list briefly describes each configuration file, the application that uses it, and whether it is required, optional, or is just a sample file that shows a best practice or additional examples of using a particular feature.  See the [Salesforce DX Developer Guide](https://goo.gl/rG43Cz) for additional information.
+
+* **workspace-config.json**: Required by Salesforce DX. Configures your workspace, which typically refers to your source code directory structure.  Use this file to specify the parameters that affect your Salesforce development project.
+* **app.json**: Required by Heroku Pipelines. Configures the Salesforce buildpack and add-on for Heroku review apps, which automatically spin up at each pull request.
+* **app-ci.json**: Required by Heroku CI.  Configures the Salesforce buildpack and add-on and tests for the Heroku app that automatically spins up as part of a Heroku CI run. 
+* **app-ci-test-runner.json**: Sample app-ci.json file that shows how to use the Test Runner within the context of Heroku CI.
+* **app-ci-apex-only.json**: Sample app-ci.json file that shows how to run Apex tests within the context of Heroku CI. 
+* **Procfile**: Optional Heroku Pipelines file.  
+* **.forceignore**:  Optional Salesforce DX file.   Lists the directories and files that you want force:src:push/pull to ignore.
+* **.project**:  Required by the Eclipse IDE.  Describes the Eclipse project. 
+* **.gitignore**:  Optional Git file. Specifies intentionally untracked files that you want Git (or in this case GitHub) to ignore.
+* **bin/extra-org-setup.sh**: Sample Salesforce DX shell script that performs additional setup on a scratch org.  Called by **bin/release**.
+* **bin/release**: Sample script file that describes the commands that are run during the release phase of a Heroku app deployment.  Called by the Heroku **Procfile**.
+* **config/workspace-scratch-def.json**: Sample file that shows how to configure the shape of a scratch org.  You can use this file when you create your workspace scratch org with the force:org:create command.   In sfdx-simple, this file is also called by the **test/test-runner-config.json** file.
+* **test/pom.xml**: Sample Maven POM file that shows how to configure the Selenium tests.  Called by the **test/test-runner-config.json** file. 
+* **test/test-data.json**: Sample file used to load data into a scratch org.   Called by **test/test-runner-config.json**.
+* **test/test-runner-config.json**: Required by Test Runner, although you can name the file anything you want.  Configures all aspects of the Test Runner, such as its profiles, the tests to run, the orgs to create, the data to load, and so on.
+* **test/test.sh**: Sample script that shows how to use the Test Runner in the context of Heroku CI.  Called by the sample **app-ci-test-runner.json** Heroku file.
+
+The following two directories contain source code:
+
+* **force-app**: The source for the sample Force.com app and tests.
+* **test/integration**: The Java source for the Selenium tests.
+
+Finally, the **utils** directory contains sample scripts for quickly creating and configuring Heroku apps and pipelines.
+
 ## Issues
 
 Please log issues related to this repository [here](https://github.com/forcedotcom/sfdx-simple/issues).
