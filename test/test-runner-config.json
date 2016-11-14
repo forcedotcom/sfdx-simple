@@ -1,7 +1,6 @@
 {
     "settings": {
-        "outputDir": "$WORKSPACE/test-results",
-        "selenium": true
+        "outputDir": "$WORKSPACE/test-results"
     },
     "jobs": [
         {
@@ -18,6 +17,7 @@
         {
             "name": "pull-request",
             "testCommand": "integration",
+            "selenium": true,
             "orgs": [
                 "sfdx-simple-default"
             ],
