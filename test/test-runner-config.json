@@ -3,76 +3,43 @@
         "outputDir": "$WORKSPACE/test-results",
         "selenium": true
     },
+    "jobs": [
+        {
+            "name": "unit",
+            "default": true,
+            "testCommand": "apex",
+            "orgs": [
+                "sfdx-simple-default"
+            ],
+            "tests": [
+                "DemoControllerTests"
+            ]
+        },
+        {
+            "name": "pull-request",
+            "testCommand": "integration",
+            "orgs": [
+                "sfdx-simple-default"
+            ],
+            "data": "config/workspace-scratch-def.json",
+            "tests": [
+                "DemoPageUITest"
+            ]
+        },
+        {
+            "name": "master",
+            "jobRefs": [
+                "unit", "pull-request"
+            ]
+        }
+    ],
     "orgs": [
         {
             "name": "sfdx-simple-default",
             "definition": "config/workspace-scratch-def.json"
         }
     ],
-    "data": [
-        {
-            "name": "demo-page-data",
-            "files": [
-                "test/test-data.json"
-            ]
-        }
-    ],
-    "suites": [
-        {
-            "name": "basic-apex",
-            "categories": [
-                {
-                    "type": "apex",
-                    "tests": [
-                        "DemoControllerTests"
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "integration-ui",
-            "categories": [
-                {
-                    "type": "integration",
-                    "tests": [
-                        "DemoPageUITest"
-                    ]
-                }
-            ],
-            "data": [
-                "demo-page-data"
-            ]
-        }
-    ],
-    "environments": [
-        {
-            "name": "sfdx-simple",
-            "orgs": [
-                "sfdx-simple-default"
-            ]
-        }
-    ],
-    "invocations": [
-        {
-            "name": "unit-tests",
-            "environments": [
-                "sfdx-simple"
-            ],
-            "suites": [
-                "basic-apex"
-            ]
-        },
-        {
-            "name": "ui-tests",
-            "environments": [
-                "sfdx-simple"
-            ],
-            "suites": [
-                "integration-ui"
-            ]
-        }
-    ],
-    "operations": [
+    "commands": [
         {
             "name": "integration",
             "exec": "mvn",
@@ -96,31 +63,8 @@
             "pushSource": false
         },
         {
-            "name": "heroku-ci"
-        }
-    ],
-    "profiles": [
-        {
-            "name": "local-unit",
-            "context": "local",
-            "default": true,
-            "invocations": [
-                "unit-tests"
-            ]
-        },
-        {
-            "name": "pull-request",
-            "context": "heroku-ci",
-            "invocations": [
-                "unit-tests"
-            ]
-        },
-        {
-            "name": "master",
-            "context": "heroku-ci",
-            "invocations": [
-                "unit-tests", "ui-tests"
-            ]
+            "name": "heroku-ci",
+            "default": true
         }
     ]
 }
