@@ -1,3 +1,3 @@
-stagingName=sfdx-simple-staging
-prodName=sfdx-simple-prod
-pipelineName=sfdx-simple-pipelines
+stagingName=don-sfdx-simple-staging
+prodName=don-sfdx-simple-prod
+pipelineName=don-sfdx-simple-pipelines
