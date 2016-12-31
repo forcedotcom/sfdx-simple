@@ -1,0 +1,98 @@
+{
+    "settings": {
+        "outputDir": "$WORKSPACE/test-results",
+        "selenium": true
+    },
+    "orgs": [
+        {
+            "name": "sfdx-simple-default",
+            "definition": "config/workspace-scratch-def.json"
+        }
+    ],
+    "data": [
+        {
+            "name": "demo-page-data",
+            "files": [
+                "test/test-data.json"
+            ]
+        }
+    ],
+    "suites": [
+        {
+            "name": "demo-page-ui",
+            "suiteNames": [
+                "DemoPageUITest"
+            ],
+            "data": [
+                "demo-page-data"
+            ]
+        }
+    ],
+    "commands": [
+        {
+            "name": "integration",
+            "exec": "mvn",
+            "timeout": 100000,
+            "env": {
+                "SALESFORCE_ACCESS_TOKEN": "$ORG_ACCESSTOKEN",
+                "SALESFORCE_INSTANCE_URL": "$ORG_INSTANCEURL",
+                "INTEGRATION_TEST_RESULTS": "$outputDir"
+            },
+            "args": [
+                "-f $WORKSPACE/test/pom.xml",
+                "-Dtest=$TEST_VAL",
+                "integration-test"
+            ]
+        }
+    ],
+    "contexts": [
+        {
+            "name": "local",
+            "useWorkspaceOrg": true,
+            "pushSource": false
+        },
+        {
+            "name": "heroku-ci"
+        }
+    ],
+    "jobs": [
+        {
+            "name": "local-unit",
+            "default": true,
+            "orgs": [
+                "sfdx-simple-default"
+            ],
+            "testCommand": "apex",
+            "tests": [
+                "DemoControllerTests"
+            ]
+        },
+        {
+            "name": "pull-request",
+            "orgs": [
+                "sfdx-simple-default"
+            ],
+            "testCommand": "apex",
+            "tests": [
+                "DemoControllerTests"
+            ]
+        },
+        {
+            "name": "ui-tests",
+            "orgs": [
+                "sfdx-simple-default"
+            ],
+            "testCommand": "integration",
+            "suites": [
+                "demo-page-ui"
+            ]
+        },
+        {
+            "name": "master",
+            "refs": [
+                "local-unit",
+                "ui-tests"
+            ]
+        }
+    ]
+}
