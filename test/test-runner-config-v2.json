@@ -60,7 +60,7 @@
             "name": "local-unit",
             "default": true,
             "orgs": [
-                "sfdx-simple-default"
+                "WORKSPACE"
             ],
             "testCommand": "apex",
             "tests": [
