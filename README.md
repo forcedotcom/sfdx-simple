@@ -18,6 +18,37 @@ Our first goal is to set up a developer workspace for us to use to modify our ap
 
     cd sfdx-simple
     
+## Steps
+
+Authorize to your Developer Hub org.
+
+    sfdx force:auth:web:login -d -a "Hub Org"
+
+If you already have an authorized Developer Hub, set it as the workspace default:
+
+    sfdx force:config:set defaultdevhubusername=<username|alias>
+
+Create a scratch org.
+
+    sfdx force:org:create -s -f config/workspace-scratch-def.json
+
+If you want to use an existing scratch org, set it as the workspace default:
+
+    sfdx force:config:set defaultausername=<username|alias>
+
+Push your source.
+
+    sfdx force:source:push
+
+Run your tests.
+
+    sfdx force:apex:test:run
+    sfdx force:apex:test:report -i <id>
+
+Open the scratch org.
+
+    sfdx force:org:open --path one/one.app
+
 ## Resources
 
 For details on using sfdx-simple, please review the [Salesforce DX Developer Guide](https://goo.gl/rG43Cz).

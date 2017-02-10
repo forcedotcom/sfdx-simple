@@ -5,6 +5,3 @@
 .settings
 node_modules
 .idea
-
-selenium-client-jars/
-testArtifacts/

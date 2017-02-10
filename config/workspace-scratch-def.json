@@ -1,8 +1,8 @@
 {
-  "Company": "Demo Company",
+  "Company": "Your Company",
   "Country": "US",
-  "LastName": "Demo",
-  "Email": "wade.wegner@salesforce.com",
+  "LastName": "lastnane",
+  "Email": "xxx@xxx.com",
   "Edition": "Developer",
   "OrgPreferences" : {
     "S1DesktopEnabled" : true
