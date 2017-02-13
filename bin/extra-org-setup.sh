@@ -30,7 +30,7 @@ runCmd() {
 echo ""
 echo "Enabling PermissionSet for App and SObject visibility..."
 # TODO
-#runCmd "$HEROKU_CLIENT force:permset:assign --name [APP_NAME]"
+#runCmd "$HEROKU_CLIENT force:user:permset:assign -n [APP_NAME]"
 
 
 if [ "$LOAD_DATA" = true ]; then
@@ -38,7 +38,7 @@ if [ "$LOAD_DATA" = true ]; then
     echo ""
     echo "Loading data..."
     # TODO
-    #runCmd "$HEROKU_CLIENT force:data:import --plan [DATA_PLAN_FILE]"
+    #runCmd "$HEROKU_CLIENT force:data::tree:import --plan [DATA_PLAN_FILE]"
 fi
 
 exit 0
