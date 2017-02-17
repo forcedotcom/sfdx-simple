@@ -38,7 +38,7 @@ if [ "$LOAD_DATA" = true ]; then
     echo ""
     echo "Loading data..."
     # TODO
-    #runCmd "$HEROKU_CLIENT force:data::tree:import --plan [DATA_PLAN_FILE]"
+    #runCmd "$HEROKU_CLIENT force:data:tree:import --plan [DATA_PLAN_FILE]"
 fi
 
 exit 0
