@@ -1,10 +1,7 @@
 .DS_Store
-.appcloud
+.sfdx
 .project
 .salesforce
 .settings
 node_modules
 .idea
-
-selenium-client-jars/
-testArtifacts/
