@@ -2,7 +2,7 @@
   "Company": "Your Company",
   "Country": "US",
   "LastName": "lastnane",
-  "Email": "xxx@xxx.com",
+  "Email": "yourname@example.com",
   "Edition": "Developer",
   "OrgPreferences" : {
     "S1DesktopEnabled" : true
