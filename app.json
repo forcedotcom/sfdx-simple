@@ -1,0 +1,26 @@
+{
+  "name": "SFDX Simple",
+  "description": "Sample Force.com app testable on Heroku",
+  "keywords": [
+    "Force.com",
+    "SFDX"
+  ],
+  "website": "https://github.com/jesperfj/sfdx-simple",
+  "repository": "https://github.com/jesperfj/sfdx-simple",
+  "success_url": "/",
+  "addons": [
+    "force-devhub"
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/jesperfj/force-buildpack"
+    }
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "sfdx force:testrunner:run -f config/test-runner.json -r tap"
+      }
+    }
+  }
+}
