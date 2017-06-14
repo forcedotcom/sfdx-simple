@@ -30,7 +30,7 @@ If you already have an authorized Developer Hub, set it as the workspace default
 
 Create a scratch org.
 
-    sfdx force:org:create -s -f config/workspace-scratch-def.json
+    sfdx force:org:create -s -f config/project-scratch-def.json
 
 If you want to use an existing scratch org, set it as the workspace default:
 
@@ -55,8 +55,8 @@ For details on using sfdx-simple, please review the [Salesforce DX Developer Gui
 
 ## Description of Files and Directories  
 
-* **sfdx-workspace.json**: Required by Salesforce DX. Configures your project workspace.  Use this file to specify the parameters that affect your Salesforce development project.
-* **config/workspace-scratch-def.json**: Sample file that shows how to define the shape of a scratch org.  You reference this file when you create your workspace scratch org with the force:org:create command.   
+* **sfdx-workspace.json**: Required by Salesforce DX. Configures your project.  Use this file to specify the parameters that affect your Salesforce development project.
+* **config/project-scratch-def.json**: Sample file that shows how to define the shape of a scratch org.  You reference this file when you create your scratch org with the force:org:create command.   
 * **force-app**: Directory that contains the source for the sample Force.com app and tests.   
 * **.project**:  Required by the Eclipse IDE.  Describes the Eclipse project. 
 * **.gitignore**:  Optional Git file. Specifies intentionally untracked files that you want Git (or in this case GitHub) to ignore.
