@@ -1,0 +1,12 @@
+{
+    "jobs": [
+         {
+             "name": "basic-apex",
+             "default": true,
+             "orgs": [
+                 "config/workspace-scratch-def.json"
+             ],
+             "testCommand": "apex"
+         }
+    ] 
+}
