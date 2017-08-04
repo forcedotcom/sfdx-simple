@@ -1,6 +1,6 @@
 # SFDX Simple App
 
-[![Deploy](https://user-images.githubusercontent.com/746259/28349388-7a0b7824-6bf7-11e7-8ff5-ac7b1fdcc6ea.jpg)](http://localhost:8080/deploy?template=https://github.com/wadewegner/sfdx-simple)
+[![Deploy](https://user-images.githubusercontent.com/746259/28349388-7a0b7824-6bf7-11e7-8ff5-ac7b1fdcc6ea.jpg)](https://deploy-to-sfdx.herokuapp.com/deploy?template=https://github.com/wadewegner/sfdx-simple)
 
 
 
