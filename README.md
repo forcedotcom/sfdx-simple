@@ -36,7 +36,7 @@ Create a scratch org.
 
 If you want to use an existing scratch org, set it as the default:
 
-    sfdx force:config:set defaultausername=<username|alias>
+    sfdx force:config:set defaultusername=<username|alias>
 
 Push your source.
 
