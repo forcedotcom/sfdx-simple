@@ -16,4 +16,9 @@ private class DemoControllerTests {
         DemoController demo = new DemoController();
         System.assertEquals(demo.getAppVersion(), '1.0.0');
     }
+
+    @isTest static void testGetTest() {
+        DemoController demo = new DemoController();
+        System.assertEquals(demo.getTest(), 'test');
+    }
 }
