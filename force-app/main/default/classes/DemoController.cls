@@ -30,4 +30,8 @@ public with sharing class DemoController {
     public String getTest() {
         return 'test';
     }
+
+    public String getEnder() {
+        return 'ender';
+    }
 }

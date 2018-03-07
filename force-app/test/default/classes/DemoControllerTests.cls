@@ -21,4 +21,9 @@ private class DemoControllerTests {
         DemoController demo = new DemoController();
         System.assertEquals(demo.getTest(), 'test');
     }
+
+    @isTest static void testEnder() {
+        DemoController demo = new DemoController();
+        System.assertEquals(demo.getTest(), 'ender');
+    }
 }
