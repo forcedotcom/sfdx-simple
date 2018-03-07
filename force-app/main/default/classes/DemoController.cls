@@ -26,4 +26,12 @@ public with sharing class DemoController {
     public String getAppVersion() {
         return '1.0.0';
     }
+
+    public String getTest() {
+        return 'test';
+    }
+
+    public String getEnder() {
+        return 'ender';
+    }
 }
