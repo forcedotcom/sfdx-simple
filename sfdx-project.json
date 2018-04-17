@@ -1,7 +1,11 @@
 {
   "packageDirectories": [
     {
-      "path": "force-app"
+      "path": "force-app",
+      "default": true,
+      "id": "0HoR0000000000GKAQ",
+      "versionNumber": "1.0.0.NEXT",
+      "versionName": "version name"
     }
   ],
   "namespace": "",
