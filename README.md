@@ -1,6 +1,6 @@
 # SFDX Simple App
 
-[![Deploy](https://deploy-to-sfdx.com/dist/assets/images/DeployToSFDX.svg)](https://deploy-to-sfdx.com/)
+> **THIS PROJECT IS NO LONGER MAINTAINED. To learn about Salesforce Development with version control see the Trailhead project [Develop an App with Salesforce CLI and Source Control](https://trailhead.salesforce.com/content/learn/projects/develop-app-with-salesforce-cli-and-source-control).**
 
 The Salesforce Developer Experience (SFDX) starts with source code living in your version control system.
 
